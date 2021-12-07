@@ -1,5 +1,5 @@
 Retrieving data from other database tables
-in cases where the sql query results are reutrned iwthin the apps responses an attacker can leverage a sql injection vulnerabillity to retrieve data from other tables within the database. This is done using hte UNION keyword, which lets you execute and additonal SELECT query and append teh results to the original query. 
+in cases where the sql query results are returned within the apps responses an attacker can leverage a sql injection vulnerabillity to retrieve data from other tables within the database. This is done using the UNION keyword, which lets you execute and additonal SELECT query and append the results to the original query. 
 
 For example, if an application executes the following query containing the user input "Gifts":
 
