@@ -21,3 +21,5 @@ I used this query to determine that the expected input is a string:
 I then searched for the required string using:
 ' UNION SELECT NULL,'VqGnBB',NULL-- 
 
+and received a successful result.
+
