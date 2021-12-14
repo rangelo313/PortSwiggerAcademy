@@ -1,4 +1,4 @@
-In this lab the goal is to return the number of columns with a query.
+In this lab, the goal is to return the number of columns with a query.
 
 The category parameter is deemed to be vulnerable to UNION based sql injection- so I selected a category intercepted the request with Burpsuite Pro.
 
@@ -10,6 +10,7 @@ I modified the category parameter according to the list provided by PortSwigger'
 ?category=Gifts'+UNION+SELECT+null,null,null--  200 OK
 ```
 
+
+
 As we can see the: category=Gifts'+UNION+SELECT+null,null,null--  200 OK
 Is the correct query chosen.
-
