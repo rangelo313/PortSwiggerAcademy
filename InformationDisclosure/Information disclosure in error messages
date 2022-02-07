@@ -1,0 +1,9 @@
+Goal: This lab's verbose error messages reveal that it is using a vulnerable version of a third-party framework. To solve the lab, obtain and submit the version number of this framework.
+
+With Burp running - I opened up one of the pages for products. 
+In burp I sent the GET /product?productId=1 request to Burp Repeater and modified the productId to equal 010030.
+Send the request.
+
+GET /product?productId="whatever"
+The unexpected data type causes an exception, and a full stack trace is displayed in the response. This reveals that the lab is using Apache Struts 2 2.3.31.
+Go back to the lab, click "Submit solution", and enter 2 2.3.31 to solve the lab.
