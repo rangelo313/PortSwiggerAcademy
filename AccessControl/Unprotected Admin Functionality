@@ -1,0 +1,8 @@
+Goal: This lab has an unprotected admin panel.
+Delete carlos user from the admin panel
+
+For this lab all I did was go to the /robots.txt and the admin panel was actually mapped out there. From here I was able to see
+User-agent: *
+Disallow: /administrator-panel
+
+From here I deleted carlos user
