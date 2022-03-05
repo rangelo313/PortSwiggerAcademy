@@ -1,0 +1,14 @@
+This lab has a stock check feature which fetches data from an internal system.
+
+To solve the lab, change the stock check URL to access the admin interface at http://localhost/admin and delete the user carlos.
+
+The developer has deployed two weak anti-SSRF defenses that you will need to bypass.
+
+
+localhost :: http://127.1/
+-URL decoding one time
+--regex search using a blacklist of strings is a very interesting approach here.
+
+when we encoded it twice it worked because it just decodes it once
+To delete we just append this to solve the lab to delete the user:
+/admin/delete?username=carlos
