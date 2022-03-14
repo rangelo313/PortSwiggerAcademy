@@ -1,10 +1,11 @@
+# XXE attacks via file upload
+This lab lets users attach avatars to comments and uses the Apache Batik library to process avatar image files.
+
 Some applications allow users to upload files which are then processed server-side. Some common file formats use XML or contain XML subcomponents. Examples of XML-based formats are office document formats like DOCX and image formats like SVG.
 
 For example, an application might allow users to upload images, and process or validate these on the server after they are uploaded. Even if the application expects to receive a format like PNG or JPEG, the image processing library that is being used might support SVG images. Since the SVG format uses XML, an attacker can submit a malicious SVG image and so reach hidden attack surface for XXE vulnerabilities.
 
-
-This lab lets users attach avatars to comments and uses the Apache Batik library to process avatar image files.
-
+## Goal
 To solve the lab, upload an image that displays the contents of the /etc/hostname file after processing. Then use the "Submit solution" button to submit the value of the server hostname.
 
 The first thing I did is look up what this library does:
@@ -18,6 +19,7 @@ After this I scrolled through the posts and did an inspect on the images and was
 
 Since it defines graphics in XML format then these files create a lot of attack scenarios like we can actually execute the XSS using the SVG file and can do a lot more. We can also execute XXE using these files which we are going to explore in this blog.
 
+## Takeaways
 If application supports PNG, JPEG and other extension of file while uploading then there might be possibility that image processing library may support SVG files as they are graphics in format of the XML. Now our aim is to upload a malicious image that uses XML as a format with some of the XXE payload which actually fetches the /etc/hostname file if the file is processed.
 
 Now you can see that the image file has been uploaded successfully now we have to check our avatar if it fetched or rendered any useful information.
